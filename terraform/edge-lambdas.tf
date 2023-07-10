@@ -7,12 +7,7 @@ data "archive_file" "origin_request_lambda" {
   type        = "zip"
   output_path = "${local.archive_path}/origin_request_lambda.zip"
 
-  source {
-    filename = "index.js"
-    content = file(
-      "${local.lambda_path}/origin-request.js",
-    )
-  }
+  source_dir = "../functions/dist"
 }
 
 resource "aws_iam_role" "lambda" {
