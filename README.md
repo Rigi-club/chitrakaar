@@ -27,6 +27,12 @@ Chitrakaar is a powerful and user-friendly project that enables effortless deplo
 
 4. **Effortless Deployment with Terraform**: The project includes Terraform configurations, making it easy to deploy the entire stack quickly and conveniently. You can spin up the required resources with minimal effort and have your image transformation pipeline up and running in no time.
 
+## Preview 📺
+
+<p align="center">
+  <video src='./docs/demo.mp4' width="80%" />
+</p>
+
 ## How It Works 🤔
 
 <p align="center">
