@@ -11,6 +11,9 @@ const plugins = [
   commonjs(),
   replace({
     preventAssignment: true,
+    "process.env.ENABLE_SYNTACTIC_SUGAR": JSON.stringify(
+      process.env.ENABLE_SYNTACTIC_SUGAR
+    ),
   }),
 ];
 

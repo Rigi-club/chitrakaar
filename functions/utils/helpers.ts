@@ -1,14 +1,34 @@
 import { CloudFrontRequest } from "aws-lambda";
 import { Format } from "./transformations";
 
-function extractKeyAndBucket(data: CloudFrontRequest) {
+function extractKeyAndBucket(
+  data: CloudFrontRequest,
+  enableSyntacticSugar: boolean
+) {
   const { uri, origin } = data;
 
   const bucket = origin?.s3?.domainName.split(".")[0];
-  const key = uri.substring(1);
+  let key = uri.substring(1);
+
+  if (enableSyntacticSugar) {
+    const { format, keyName } = getPossibleExtensionFromKey(key);
+
+    return {
+      key: keyName,
+      bucket,
+      format,
+    };
+  }
 
   return { key, bucket };
 }
+
+const getPossibleExtensionFromKey = (key: string) => {
+  const splitKey = key.split(".");
+  const format = splitKey.length > 1 ? splitKey.pop() : undefined;
+  const keyName = splitKey.join(".");
+  return { format, keyName };
+};
 
 function getMimeType(format: Format) {
   switch (format) {

@@ -148,9 +148,12 @@ const validateParams = (params: QueryParams) => {
   return _params;
 };
 
-export const transformQueryString = (querystring: string): Transformations => {
+export const transformQueryString = (
+  querystring: string,
+  initialParams: Record<string, unknown> = {}
+): Transformations => {
   const params = qs.parse(querystring);
-  return validateParams(params);
+  return validateParams({ ...initialParams, ...params });
 };
 
 export default transformQueryString;

@@ -5,6 +5,9 @@ import sharp from "sharp";
 
 const s3 = new S3();
 
+const enableSyntacticSugar = process.env.ENABLE_SYNTACTIC_SUGAR === "true";
+console.log(enableSyntacticSugar);
+
 export const handler: AWSLambda.CloudFrontRequestHandler = async (event) => {
   const request = event.Records[0].cf.request;
   try {
@@ -12,14 +15,18 @@ export const handler: AWSLambda.CloudFrontRequestHandler = async (event) => {
       return request;
     }
 
-    const { bucket: Bucket, key: Key } = extractKeyAndBucket(request);
+    const {
+      bucket: Bucket,
+      key: Key,
+      format: Format,
+    } = extractKeyAndBucket(request, enableSyntacticSugar);
 
     if (!Bucket || !Key) {
       console.error("No bucket or key");
       return request;
     }
 
-    const params = transformQueryString(request.querystring);
+    let params = transformQueryString(request.querystring, { format: Format });
 
     const { Body } = await s3.getObject({ Bucket, Key }).promise();
 
