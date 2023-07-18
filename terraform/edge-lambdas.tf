@@ -65,4 +65,6 @@ resource "aws_lambda_function" "origin_request_lambda" {
   source_code_hash = filebase64sha256(data.archive_file.origin_request_lambda.output_path)
   runtime          = "nodejs14.x"
   publish          = true
+  timeout          = 30
+  memory_size      = 512
 }
