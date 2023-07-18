@@ -11,7 +11,7 @@ data "archive_file" "origin_request_lambda" {
 }
 
 resource "aws_iam_role" "lambda" {
-  name               = "edge-lambda-media-origin-request"
+  name               = "edge-lambda-chitrakaar-request"
   assume_role_policy = data.aws_iam_policy_document.assume.json
 }
 
@@ -37,9 +37,9 @@ data "aws_iam_policy_document" "assume" {
 
 resource "aws_lambda_function" "origin_request_lambda" {
   filename         = data.archive_file.origin_request_lambda.output_path
-  function_name    = "media-origin-request"
+  function_name    = "chitrakaar"
   role             = aws_iam_role.lambda.arn
-  handler          = "index.handler"
+  handler          = "origin-request.handler"
   source_code_hash = filebase64sha256(data.archive_file.origin_request_lambda.output_path)
   runtime          = "nodejs14.x"
   publish          = true
