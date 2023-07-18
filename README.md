@@ -187,6 +187,18 @@ Here are a few more examples to showcase the image transformations that can be a
 
 Feel free to explore and experiment with different combinations of transformations to achieve the desired visual effects for your images.
 
+## Syntactic Sugar for Output Format Extraction (Experimental) 🍭
+
+Chitrakaar offers an experimental feature known as "syntactic sugar" to automatically extract the output format based on the key name when building the functions. By enabling this feature with the flag `ENABLE_SYNTACTIC_SUGAR=true npm run build`, Chitrakaar attempts to determine the output format from the key name in the URL.
+
+For example, if you have a key named `image` and you send a request for `/image.png` with syntactic sugar enabled, Chitrakaar will automatically convert the image to the PNG format.
+
+> **Important Note:** The author would like to emphasize that while syntactic sugar can provide convenience, it may introduce ambiguities. It is crucial to note that query parameters take precedence over the extension when determining the output format. When both the query parameter `format` and a format extension exist in the URL, the format specified through the query parameter will be respected by Chitrakaar, superseding the extension.
+
+Therefore, to ensure predictable and definitive output formats, it is strongly advised to use the recommended approach of specifying the desired format explicitly as a query parameter (e.g., `?format=png`). This approach ensures that the specified format is respected without any ambiguity caused by format extraction from the key name or extension.
+
+While the syntactic sugar feature can be useful in certain scenarios, it is essential to exercise caution and employ the query parameter method for specifying the output format with clarity and eliminating potential conflicts caused by key name matches and ensuring the desired format is correctly applied.
+
 ## License 📜
 
 `chitrakaar` is available under the MIT license. See the `LICENSE` file for more info.
