@@ -210,6 +210,7 @@ Please read `Contributing.md` for details on our code of conduct, and the proces
 ## Shout outs 💥
 
 | <p align="center">![Ishan Chhabra](https://github.com/ishan-chhabra.png?size=128)<br>[Ishan Chhabra](https://github.com/ishan-chhabra)</p>
+| <p align="center">![Astha Hariyani](https://github.com/astha-rigi.png?size=128)<br>[Astha Hariyani](https://github.com/astha-rigi)</p>
 | ---------------------------------------------------------------------------------------------------------------------------------- |
 
 ## Forking this repo 🚨
