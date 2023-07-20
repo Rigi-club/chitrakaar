@@ -6,7 +6,7 @@ resource "aws_cloudfront_distribution" "media_cloudfront" {
   is_ipv6_enabled = true
 
   origin {
-    domain_name = aws_s3_bucket.media_bucket.bucket_regional_domain_name
+    domain_name = var.create_bucket ? one(resource.aws_s3_bucket.media_bucket).bucket_regional_domain_name : one(data.aws_s3_bucket.media_bucket).bucket_regional_domain_name
     origin_id   = "S3-media-bucket"
 
     s3_origin_config {
