@@ -23,11 +23,7 @@ const validateBoolean = (value: string, errorPrefix: string): boolean => {
   } else throw new Error(`${errorPrefix} must be true or false`);
 };
 
-const oneOf = (
-  value: string,
-  options: string[],
-  errorPrefix: string
-): string => {
+const oneOf = <T = string>(value: T, options: T[], errorPrefix: string): T => {
   if (!options.includes(value)) {
     throw new Error(`${errorPrefix} must be one of ${options.join(", ")}`);
   }
@@ -45,6 +41,7 @@ type Transformations = {
   height?: number;
   quality?: number;
   rotate?: number;
+  scale?: number;
   sharpen?: number;
   width?: number;
 };
@@ -135,6 +132,14 @@ const validateParams = (params: QueryParams) => {
 
   if (params.rotate) {
     _params.rotate = castAndValidateInt(params.rotate, "rotate");
+  }
+
+  if (params.scale) {
+    _params.scale = oneOf<number>(
+      castAndValidateInt(params.scale, "scale"),
+      [1, 2, 3],
+      "scale"
+    );
   }
 
   if (params.sharpen) {

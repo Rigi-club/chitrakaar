@@ -6,7 +6,7 @@ import sharp from "sharp";
 const s3 = new S3();
 
 const enableSyntacticSugar = process.env.ENABLE_SYNTACTIC_SUGAR === "true";
-console.log(enableSyntacticSugar);
+const withoutEnlargement = process.env.WITHOUT_ENLARGEMENT === "true";
 
 export const handler: AWSLambda.CloudFrontRequestHandler = async (event) => {
   const request = event.Records[0].cf.request;
@@ -46,14 +46,21 @@ export const handler: AWSLambda.CloudFrontRequestHandler = async (event) => {
       params.height ||
       params.fit ||
       params.gravity ||
-      params.background
+      params.background ||
+      params.scale
     ) {
+      const scale = params.scale ?? 1;
+
+      const _width = params.width ?? metadata.width;
+      const _height = params.height ?? metadata.height;
+
       sharpImage.resize({
-        width: params.width,
-        height: params.height,
+        width: _width ? _width * scale : undefined,
+        height: _height ? _height * scale : undefined,
         fit: params.fit,
         position: params.gravity,
         background: params.background,
+        withoutEnlargement,
       });
     }
 

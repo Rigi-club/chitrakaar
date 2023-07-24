@@ -8,7 +8,7 @@
     "clean": "rimraf './dist/*'",
     "lint": "eslint 'src/**/*.ts'",
     "build": "npm run clean && rollup -c",
-    "postbuild": "cp package.json dist/package.json && node scripts/fix-package.js && cd dist && yarn -prod && yarn sharp",
+    "postbuild": "cp package.json dist/package.json && node scripts/fix-package.js && cd dist && yarn -prod && yarn sharp && cd .. && node scripts/build-info.js",
     "sharp": "SHARP_IGNORE_GLOBAL_LIBVIPS=1 npm_config_arch=x64 npm_config_platform=linux yarn add sharp"
   },
   "keywords": [],

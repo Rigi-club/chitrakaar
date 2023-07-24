@@ -14,6 +14,9 @@ const plugins = [
     "process.env.ENABLE_SYNTACTIC_SUGAR": JSON.stringify(
       process.env.ENABLE_SYNTACTIC_SUGAR
     ),
+    "process.env.WITHOUT_ENLARGEMENT": JSON.stringify(
+      process.env.WITHOUT_ENLARGEMENT
+    ),
   }),
 ];
 
