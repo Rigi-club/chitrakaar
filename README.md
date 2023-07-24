@@ -199,6 +199,14 @@ Therefore, to ensure predictable and definitive output formats, it is strongly a
 
 While the syntactic sugar feature can be useful in certain scenarios, it is essential to exercise caution and employ the query parameter method for specifying the output format with clarity and eliminating potential conflicts caused by key name matches and ensuring the desired format is correctly applied.
 
+## Flags
+
+| Flag                   | Description                                                                                          |
+| ---------------------- | ---------------------------------------------------------------------------------------------------- |
+| DEV                    | Saves the generated image on the local file system for easier dev debugging. Default `false`.        |
+| ENABLE_SYNTACTIC_SUGAR | Enables experimental Syntactic Sugar mode. Default `false`.                                          |
+| WITHOUT_ENLARGEMENT    | Do not scale up if the width or height are already less than the target dimensions. Default `false`. |
+
 ## License 📜
 
 `chitrakaar` is available under the MIT license. See the `LICENSE` file for more info.
@@ -209,9 +217,14 @@ Please read `Contributing.md` for details on our code of conduct, and the proces
 
 ## Shout outs 💥
 
-| <p align="center">![Ishan Chhabra](https://github.com/ishan-chhabra.png?size=128)<br>[Ishan Chhabra](https://github.com/ishan-chhabra)</p>
-| <p align="center">![Astha Hariyani](https://github.com/astha-rigi.png?size=128)<br>[Astha Hariyani](https://github.com/astha-rigi)</p>
-| ---------------------------------------------------------------------------------------------------------------------------------- |
+<table>
+  <tbody>
+    <tr>
+      <td align="center" valign="top" width="14.28%"><a href="https://github.com/ishan-chhabra"><img src="https://github.com/ishan-chhabra.png?size=128" width="100px;" alt="Ishan Chhabra"/><br /><sub><b>Ishan Chhabra</b></sub></a><br /></td>
+      <td align="center" valign="top" width="14.28%"><a href="https://github.com/astha-rigi"><img src="https://github.com/astha-rigi.png?size=128" width="100px;" alt="Astha Hariyani"/><br /><sub><b>Astha Hariyani</b></sub></a><br /></td>
+    </tr>
+  </tbody>
+</table>
 
 ## Forking this repo 🚨
 
