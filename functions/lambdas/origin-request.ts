@@ -26,7 +26,11 @@ export const handler: AWSLambda.CloudFrontRequestHandler = async (event) => {
       return request;
     }
 
-    let params = transformQueryString(request.querystring, { format: Format });
+    let params = transformQueryString(request.querystring, {
+      format: Format,
+      fit: "contain",
+      background: "#00000000",
+    });
 
     const { Body } = await s3.getObject({ Bucket, Key }).promise();
 
