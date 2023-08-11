@@ -90,7 +90,9 @@ export const handler: AWSLambda.CloudFrontRequestHandler = async (event) => {
       throw new Error("No format in metadata.");
     }
 
-    sharpImage.toFormat(format, { quality: params.quality });
+    if (params.format || typeof params.quality !== "undefined") {
+      sharpImage.toFormat(format, { quality: params.quality });
+    }
 
     if (process.env.DEV) {
       const ext = params.format || metadata.format;
