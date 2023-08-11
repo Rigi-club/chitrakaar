@@ -28,7 +28,7 @@ export const handler: AWSLambda.CloudFrontRequestHandler = async (event) => {
 
     let params = transformQueryString(request.querystring, {
       format: Format,
-      fit: "contain",
+      fit: "inside",
       background: "#00000000",
     });
 
