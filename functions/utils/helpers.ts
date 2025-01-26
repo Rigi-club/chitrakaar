@@ -8,7 +8,7 @@ function extractKeyAndBucket(
   const { uri, origin } = data;
 
   const bucket = origin?.s3?.domainName.split(".")[0];
-  let key = uri.substring(1);
+  let key = uri.replace(/^\/\+/, " ").replace(/^\//, "");
 
   if (enableSyntacticSugar) {
     const { format, keyName } = getPossibleExtensionFromKey(key);
