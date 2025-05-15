@@ -45,8 +45,7 @@ resource "aws_cloudfront_distribution" "media_cloudfront" {
 
     lambda_function_association {
       event_type   = "origin-request"
-      lambda_arn   = aws_lambda_function.origin_request_lambda.qualified_arn
-      include_body = false
+      lambda_arn   = local.lambda_arn
     }
   }
 }
